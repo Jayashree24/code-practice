@@ -9,13 +9,7 @@ def merge(x, y):
 	len_y = len(y)
 	arr = [0] * (len_x + len_y)
 	i = j = k = 0
-	while i < len_x or j < len_y:
-		if j >= len_y:
-			arr[k:] = x[i:] 
-			break
-		if i >= len_x:
-			arr[k:] = y[j:]
-			break
+	while i < len_x and j < len_y:
 		print ("[%s] %s=%s, %s=%s" % (k, i, x[i], j, y[j]))
 		if x[i] < y[j]:
 			arr[k] = x[i]
@@ -31,10 +25,10 @@ def merge(x, y):
 			j += 1
 		k += 1
 		print (arr)
+	arr[k:] = x[i:] + y[j:]
 	return arr
 
-x = [0,3,4,31,33,90]
-y = [4,6,30,32]
+x = [0,3,4,31,32]
+y = [4,6,30,90,101]
 print (merge(x, y))
-			
 
