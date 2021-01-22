@@ -19,18 +19,13 @@ Output: -100000
 """
 
 def maxSubArray(nums):
-	s = -100000000000001
-	l = len(nums)
-	for i in range(l):
-		j = l
-		while (j > i):
-			x = sum(nums[i:j]) 
-			print ("%s=%s sum=%s" % (i, nums[i:j], x))
-			if x > s:
-				s = x 
-			j -= 1
-	return s
-
+	sum = m = nums[0] 
+	for i in range(1, len(nums)):
+		print (sum+nums[i], nums[i])	
+		sum = max(sum+nums[i], nums[i])
+		m = max(m, sum)
+	return m
+		
 nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 #nums = [5,7,8,-1,-3,-3,1,2,4,-9,3,4]
 #nums = [-100000]
