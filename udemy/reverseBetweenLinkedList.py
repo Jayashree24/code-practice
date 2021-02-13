@@ -12,43 +12,31 @@ Output: 1->4->3->2->5->NULL
 from LinkedList import LinkedList 
 
 def reverseBetween(head, m, n):
-	start = None
-	first = head
-	second = first.next
-	i = 0
-	while second:
-		print (i, first.value, second.value)
-		if n == 1 or m == n:
-			return head
-		if m-2 <= i <= n-2:
-			if not start:
-				start = first
-				print ("start=%s %s" % (start.value, start.next.value))	
-			temp = second.next
-			second.next = first
-			first = second
-			second = temp
-			print (i, first.value, second.value)
-			end = first 
-			end_next = second 
-			print ('end=%s %s %s' % (end.value, end_next.value, temp.value))
-		else:
-			first = second 
-			second = first.next
-		i += 1
+	if m == n or n == 1:
+		return head
 
-	if start:
-		print ("start=%s %s %s %s" % (start.value, start.next.value, end.value, end.next.value))
-		if m == 1:
-			print ('heee')
-			start.next = end_next
-			head = end
-		else:
-			temp = start.next
-			start.next = end
-			temp.next = end_next
-		print ("start=%s %s %s %s" % (start.value, start.next.value, end.value, end.next.value))
+	curnode = start = head
+	curpos = 1
+	while curpos < m:
+		start = curnode
+		curnode = curnode.next
+		curpos += 1
 
+	newlist = None
+	tail = curnode
+
+	while m <= curpos <= n:
+		next = curnode.next
+		curnode.next = newlist
+		newlist = curnode
+		curnode = next
+		curpos += 1	
+
+	if m == 1:
+		head = newlist	
+	start.next = newlist 
+	tail.next = curnode
+			
 	ptr = head
 	l = []
 	while ptr:
@@ -64,7 +52,7 @@ def create_linked_list(arr):
 	l.prin()
 	return l.head 
 
-m = 2 
+m = 1 
 n = 4 
 s = [10,22,13,4,5,23,1,24,16,8]
 #s = [1,2,3,4,5]
