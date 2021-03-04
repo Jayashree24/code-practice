@@ -1,5 +1,6 @@
 """
-square root of a number without using sqrt library
+Given a number n, find the square root of that number, floored to the nearest possible integer.
+Do not use the math library to find the square root.
 """
 import math
 
