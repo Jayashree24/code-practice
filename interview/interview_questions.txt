@@ -1,0 +1,6 @@
+Q1.   Given a number n, find the square root of that number, floored to the nearest possible integer.
+Do not use the math library to find the square root. 
+
+Q2.     You have a list of names, some of which are duplicates.
+Write a program that prints out only the duplicate names and only prints each duplicate once 
+
