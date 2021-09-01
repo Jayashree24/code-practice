@@ -1,3 +1,8 @@
+"""
+https://www.geeksforgeeks.org/sort-a-stack-using-recursion/
+
+"""
+
 def insert(x, n):
 	print ('x=%s n=%s' % (x, n))
 	if not x or (x and n >= x[-1]):
